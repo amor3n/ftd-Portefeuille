@@ -13,18 +13,20 @@ export default () => {
     repo?: string;
     branch?: string;
     mdName?: string;
-  }) =>
-    useQuery({
-      queryKey: ["getReadme", `/${user}/${repo}/${branch}/${mdName}`],
+  }) => {
+    const full_url = `${user}/${repo}/${branch}/${mdName}`;
+
+    return useQuery({
+      queryKey: ["getReadme", `/${full_url}`],
       enabled: !!repo,
-      queryFn: () =>
-        get(`/${user}/${repo}/${branch}/${mdName}`).then((res) => res),
+      queryFn: () => get(`/${full_url}`).then((res) => res),
       select(data) {
         return {
           payload: data.payload,
         };
       },
     });
+  };
 
   return { getReadme };
 };

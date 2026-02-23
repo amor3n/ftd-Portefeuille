@@ -78,20 +78,20 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       y: window.innerHeight / 2,
     });
 
-    const createSpinTimeline = () => {
-      if (spinTl.current) {
-        spinTl.current.kill();
-      }
-      spinTl.current = gsap
-        .timeline({ repeat: -1 })
-        .to(cursor, {
-          rotation: "+=360",
-          duration: spinDuration,
-          ease: "none",
-        });
-    };
+    // const createSpinTimeline = () => {
+    //   if (spinTl.current) {
+    //     spinTl.current.kill();
+    //   }
+    //   spinTl.current = gsap
+    //     .timeline({ repeat: -1 })
+    //     .to(cursor, {
+    //       rotation: "+=360",
+    //       duration: spinDuration,
+    //       ease: "none",
+    //     });
+    // };
 
-    createSpinTimeline();
+    // createSpinTimeline();
 
     const tickerFn = () => {
       if (

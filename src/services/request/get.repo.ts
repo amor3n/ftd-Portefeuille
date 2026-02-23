@@ -19,11 +19,13 @@ export default () => {
     return `${baseUrl}/${user}/${repo}/refs/heads/main/public/logo.jpg`;
   };
 
-  const getCollection = () =>
-    useQuery({
-      queryKey: ["getCollection", `/users/${user}/repos`],
+  const getCollection = () => {
+    const full_url = `users/${user}/repos`;
+
+    return useQuery({
+      queryKey: ["getCollection", `/${full_url}`],
       enabled: true,
-      queryFn: () => get(`/users/${user}/repos`).then((res) => res),
+      queryFn: () => get(`/${full_url}`).then((res) => res),
       select(data) {
         const collection = (data.payload as GithubRepoData[])
           .filter((item) => item.name !== "Amor3Novilunio")
@@ -44,13 +46,15 @@ export default () => {
         };
       },
     });
+  };
 
-  const getBrainDumpMD = () =>
-    useQuery({
-      queryKey: ["getCollection", `/repos/${user}/md-brain-dump/contents`],
+  const getBrainDumpMD = () => {
+    const full_url = `/repos/${user}/md-brain-dump/contents`;
+
+    return useQuery({
+      queryKey: ["getCollection", `/${full_url}`],
       enabled: true,
-      queryFn: () =>
-        get(`/repos/${user}/md-brain-dump/contents`).then((res) => res),
+      queryFn: () => get(`/${full_url}`).then((res) => res),
       select(data) {
         const collection = (data.payload as GithubRepoData[]).map((item) => ({
           ...item,
@@ -73,5 +77,6 @@ export default () => {
         };
       },
     });
+  };
   return { getCollection, getBrainDumpMD };
 };
