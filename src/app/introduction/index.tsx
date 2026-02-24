@@ -10,9 +10,6 @@ export default () => {
       })}
     >
       <Hero />
-      <span className={"text-5xl font-montserrat text-white tracking-widest"}>
-        TBA
-      </span>
       {/* <WhatIWorkWith /> */}
       <StackRotation />
     </div>

@@ -13,48 +13,56 @@ export default () => {
   return (
     <>
       {isSuccess && data && (
-        <div
-          className={twm({
-            base: `flex flex-col justify-center items-center gap-5 font-bitcount tracking-wide`,
-            breakpoints: {
-              lg: "lg:items-start lg:gap-2",
-            },
-          })}
-        >
-          <h2
+        <>
+          <div
             className={twm({
-              base: `text-base tracking-wide ${colors.text.primary}`,
+              base: `flex flex-col justify-center items-center gap-5 font-bitcount tracking-wide`,
               breakpoints: {
-                md: "md:text-3xl",
-                lg: " ",
-                xl: " ",
-                "2xl": " ",
+                lg: "lg:items-start lg:gap-2",
               },
             })}
           >
-            {data.payload.title}
-          </h2>
-
-          <h2
-            className={twm({
-              base: "text-xs font-montserrat ",
-              breakpoints: {
-                md: "md:text-lg md:w-[90%]",
-                lg: "lg:text-sm lg:w-[80%]",
-                xl: "xl:w-[60%]",
-                "2xl": " ",
-              },
-            })}
-          >
-            <span
+            <h2
               className={twm({
-                base: `font-bold tracking-wide ${colors.text.secondary}`,
+                base: `text-base tracking-wide ${colors.text.primary}`,
+                breakpoints: {
+                  md: "md:text-3xl",
+                  lg: " ",
+                  xl: " ",
+                  "2xl": " ",
+                },
               })}
             >
-              {data.payload.subTitle}
-            </span>
-          </h2>
-        </div>
+              {data.payload.title}
+            </h2>
+
+            <h2
+              className={twm({
+                base: "text-xs font-montserrat ",
+                breakpoints: {
+                  md: "md:text-lg md:w-[90%]",
+                  lg: "lg:text-sm lg:w-[80%]",
+                  xl: "xl:w-[60%]",
+                  "2xl": " ",
+                },
+              })}
+            >
+              <span
+                className={twm({
+                  base: `font-bold tracking-wide ${colors.text.secondary}`,
+                })}
+              >
+                {data.payload.subTitle}
+              </span>
+            </h2>
+          </div>
+
+          <span
+            className={"text-5xl font-montserrat text-white tracking-widest"}
+          >
+            TBA
+          </span>
+        </>
       )}
 
       <RequestHandler
