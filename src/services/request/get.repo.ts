@@ -16,7 +16,7 @@ export default () => {
 
   const gitHubRawLogoUrl = (repo: string) => {
     const baseUrl = import.meta.env.VITE_GITHUB_RAW_BASE_URL;
-    return `${baseUrl}/${user}/${repo}/refs/heads/main/public/logo.jpg`;
+    return `${baseUrl}/${user}/${repo}/refs/heads/main/public/logo.png`;
   };
 
   const getCollection = () => {
@@ -28,7 +28,7 @@ export default () => {
       queryFn: () => get(`/${full_url}`).then((res) => res),
       select(data) {
         const collection = (data.payload as GithubRepoData[])
-          .filter((item) => item.name !== "Amor3Novilunio")
+          .filter((item) => item.name !== "amor3n")
           .map((item) => ({ ...item, repo: item.name, mdFile: "README.md" }));
 
         const masonryItems: Item[] = collection
@@ -49,10 +49,10 @@ export default () => {
   };
 
   const getBrainDumpMD = () => {
-    const full_url = `/repos/${user}/md-brain-dump/contents`;
+    const full_url = `repos/${user}/md-brain-dump/contents`;
 
     return useQuery({
-      queryKey: ["getCollection", `/${full_url}`],
+      queryKey: ["getBrainDumpMD", `/${full_url}`],
       enabled: true,
       queryFn: () => get(`/${full_url}`).then((res) => res),
       select(data) {
